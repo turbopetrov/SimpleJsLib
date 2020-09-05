@@ -1,45 +1,45 @@
 //stringFunctions
 
 //_.endsWith
-function endsWith (string, target, position) {
+export function endsWith (string, target, position) {
 	(position == undefined)? position = string.length - 1 : position--;
 	let result = (string[position] == target)? true : false;
 	return result;
 }
 
 //_.startsWith
-function startsWith(string, target, position) {
+export function startsWith(string, target, position) {
 	(position == undefined)? position = 0 : position;
 	return (string.startsWith(target, position))? true:false;
 }
 
 
 //_.toUpper
-function toUpper (string) {
+export function toUpper (string) {
 	return string.toUpperCase();
 }
 //_.toLower
-function toLower (string) {
+export function toLower (string) {
 	return string.toLowerCase();
 }
 
 //_.capitalize
-function capitalize(string){
+export function capitalize(string){
 	string = string.toLowerCase();
 	return string[0].toUpperCase() + string.slice(1);		
 }
 
 //_.lowerFirst
-function lowerFirst(string) {
+export function lowerFirst(string) {
 	return string[0].toLowerCase() + string.slice(1);
 }
 
 //_.upperFirst
-function upperFirst(string) {
+export function upperFirst(string) {
 	return string[0].toUpperCase() + string.slice(1);
 }
 //_.repeat
-function repeat(string, multiplier) {
+export function repeat(string, multiplier) {
 	let result = "";
 	for (let i = 0; i < multiplier; i++){
 		result = result+string; 
@@ -49,17 +49,17 @@ function repeat(string, multiplier) {
 }
 
 //_.split
-function split(string, separator, limit) {
+export function split(string, separator, limit) {
 	return string.split(separator, limit)
 }
 
 //trim
-function trim(string, chars){
+export function trim(string, chars){
 	let reg = new RegExp(chars, "g")
 	return string.replace(reg,"");	
 }
 //_.camelCase
-function camelCase (string) {
+export function camelCase (string) {
 	let arrString = string.split(/\W/g);
 	let clearArr = [];
 	for (let i = 0; i < arrString.length; i++) {
@@ -76,7 +76,7 @@ function camelCase (string) {
 }
 
 //_.kebabCase
-function kebabCase(string){
+export function kebabCase(string){
 	let arrString = string.split(/\W/g);
 	let clearArr = [];
 	for (let i = 0; i < arrString.length; i++) {
@@ -88,7 +88,7 @@ function kebabCase(string){
 	return newArr.join("-");
 }
  //_.lowerCase
- function lowerCase(string){
+ export function lowerCase(string){
 	let arrString = string.split(/\W/g);
 	let clearArr = [];
 	for (let i = 0; i < arrString.length; i++) {
@@ -101,7 +101,7 @@ function kebabCase(string){
  }
 
  //_.snakeCase
- function snakeCase(string){
+ export function snakeCase(string){
 	let arrString = string.split(/\W/g);
 	let clearArr = [];
 	for (let i = 0; i < arrString.length; i++) {
@@ -114,7 +114,7 @@ function kebabCase(string){
  }
 
  //_.upperCase
- function upperCase(string){
+ export function upperCase(string){
 	let arrString = string.split(/\W/g);
 	let clearArr = [];
 	for (let i = 0; i < arrString.length; i++) {
@@ -128,7 +128,7 @@ function kebabCase(string){
 
 //_.startCase
 
-function startCase(string){
+export function startCase(string){
 	let arrString = [];
 	if (string.search(/\W/) == -1){
 		arrString = string.split(/(?=[A-Z])/);
