@@ -14,3 +14,8 @@ export function validString (value) {
   let valid = (typeof(value) === "string")? true:false;
   return valid;
 }
+export function validObject(value){
+  let valid = (Object.getPrototypeOf(value) === Object.prototype)?
+  true:false;
+  return valid;
+}

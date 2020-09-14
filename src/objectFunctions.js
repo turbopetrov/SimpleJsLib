@@ -1,74 +1,95 @@
 //objectFunctions
-
+import {validObject} from './validation';
 //_.findKey
 
 export function findKey(obj, checkFunction) {
-	let resultObject = [];
-	for (let key in obj){
-		if(checkFunction(obj[key])){
-			resultObject.push(key);
-		}					
-	}
-	if (resultObject.length == 0){
-		return undefined
-	}
-	else{
-		return resultObject.join(", ");
-	}
+	 if (validObject(object)){
+		let resultObject = [];
+		for (let key in obj){
+			if(checkFunction(obj[key])){
+				resultObject.push(key);
+			}					
+		}
+		if (resultObject.length == 0){
+			return undefined
+		}
+		else{
+			return resultObject.join(", ");
+		}  
+	 }
+	 else return 'invalid values, clear object require';	
 }
 
 //_.pick
 
 export function pick(object, ...values){
-	let newObject = {};
-	for(let key in object){
-		if (values.includes(key)){
-			newObject[key] = object[key];
-		}		
+	if (validObject(object)){
+		let newObject = {};
+		for(let key in object){
+			if (values.includes(key)){
+				newObject[key] = object[key];
+			}		
+		}
+		return newObject;
 	}
-	return newObject;
+	else return 'invalid values, clear object require';	
 }
 
 //_.omit
 
 export function omit(object, ...values){
+	if (validObject(object)){
 	let newObject = {};
-	for (let key in object){
-		if(!values.includes(key)){
-			newObject[key] = object[key];
+		for (let key in object){
+			if(!values.includes(key)){
+				newObject[key] = object[key];
+			}
 		}
+		return newObject; 
 	}
-	return newObject;
+	else return 'invalid values, clear object require';	
 }
 
 //_.keys
 
 export function keys(object){
-	return Object.keys(object);
+	if (validObject(object)){
+		return Object.keys(object);
+	}
+	else return 'invalid values, clear object require';
 }
 
 //_.values
 
 export function values(object){
-	return Object.values(object);
+	if(validObject(object)){
+		return Object.values(object);	
+	}
+	else return 'invalid values, clear object require';
 }
 
 // _.get
 
 export function get(object, path, defaultValue){
-	path = (Array.isArray(path))? path : path.split(".");
-	let key = object;
-	key = key[path[0]];
-	if (key&&path.length>1){
-		return get(key, path.slice(1), defaultValue);
-	}	
-		return (key === undefined)? defaultValue : key;	
+	if (validObject(object)){
+		path = (Array.isArray(path))? path : path.split(".");
+		let key = object;
+		key = key[path[0]];
+		if (key&&path.length>1){
+			return get(key, path.slice(1), defaultValue);
+		}	
+			return (key === undefined)? defaultValue : key;		
+	}
+	else return 'invalid values, clear object require';	
 }
 
 //_.unset
 
 export function unset(object, path){
-	path = (Array.isArray(path))? path.join(".") : path;
-	let str = "object." + path;
-	 return eval("delete " + str);
+	if (validObject(object)){
+		path = (Array.isArray(path))? path.join(".") : path;
+		let str = "object." + path;
+		return eval("delete " + str);
+	}
+	else return 'invalid values, clear object require';
 }
