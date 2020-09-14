@@ -10,3 +10,7 @@ export function validArray(array){
   return valid;
 }
 
+export function validString (value) {
+  let valid = (typeof(value) === "string")? true:false;
+  return valid;
+}
