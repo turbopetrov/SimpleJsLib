@@ -4,17 +4,16 @@ let conf = {
     output:{
       path:  path.resolve(__dirname, './dist'),
       filename: 'main.js',
-      publicPath: 'dist/'
+      publicPath: 'dist/',
     },
-    // module: {
-    //   rules: [
-    //     {
-    //       test: /\.js$/,
-    //       loader: 'babel-loader',
-    //       // exclude: '/node_modules/'
-    //     }
-    //   ]
-    // }
-        
+    module: {
+      rules: [
+        {
+          test:/\.js$/,
+          loader: 'babel-loader'
+        }
+      ]
+    }
+           
 };
 module.exports = conf;
