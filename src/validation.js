@@ -1,21 +1,20 @@
-//validation
+// validation
 
-export function validNumber(...[number]){
-  let valid = (isFinite(number))? true:false;
+export function validNumber(...[number]) {
+  const valid = !!(isFinite(number));
   return valid;
 }
 
-export function validArray(array){
-  let valid = (Array.isArray(array))? true:false;
+export function validArray(array) {
+  const valid = !!(Array.isArray(array));
   return valid;
 }
 
-export function validString (value) {
-  let valid = (typeof(value) === "string")? true:false;
+export function validString(value) {
+  const valid = (typeof (value) === 'string');
   return valid;
 }
-export function validObject(value){
-  let valid = (Object.getPrototypeOf(value) === Object.prototype)?
-  true:false;
+export function validObject(value) {
+  const valid = (Object.getPrototypeOf(value) === Object.prototype);
   return valid;
 }

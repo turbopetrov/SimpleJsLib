@@ -1,95 +1,94 @@
-//objectFunctions
-import {validObject} from './validation';
-//_.findKey
+// objectFunctions
+import { validObject } from './validation';
+// _.findKey
 
 export function findKey(obj, checkFunction) {
-	 if (validObject(object)){
-		let resultObject = [];
-		for (let key in obj){
-			if(checkFunction(obj[key])){
-				resultObject.push(key);
-			}					
-		}
-		if (resultObject.length == 0){
-			return undefined
-		}
-		else{
-			return resultObject.join(", ");
-		}  
+	 if (validObject(object)) {
+    const resultObject = [];
+    for (const key in obj) {
+      if (checkFunction(obj[key])) {
+        resultObject.push(key);
+      }
+    }
+    if (resultObject.length == 0) {
+      return undefined;
+    }
+
+    return resultObject.join(', ');
 	 }
-	 else return 'invalid values, clear object require';	
+	 return 'invalid values, clear object require';
 }
 
-//_.pick
+// _.pick
 
-export function pick(object, ...values){
-	if (validObject(object)){
-		let newObject = {};
-		for(let key in object){
-			if (values.includes(key)){
-				newObject[key] = object[key];
-			}		
-		}
-		return newObject;
-	}
-	else return 'invalid values, clear object require';	
+export function pick(object, ...values) {
+  if (validObject(object)) {
+    const newObject = {};
+    for (const key in object) {
+      if (values.includes(key)) {
+        newObject[key] = object[key];
+      }
+    }
+    return newObject;
+  }
+  return 'invalid values, clear object require';
 }
 
-//_.omit
+// _.omit
 
-export function omit(object, ...values){
-	if (validObject(object)){
-	let newObject = {};
-		for (let key in object){
-			if(!values.includes(key)){
-				newObject[key] = object[key];
-			}
-		}
-		return newObject; 
-	}
-	else return 'invalid values, clear object require';	
+export function omit(object, ...values) {
+  if (validObject(object)) {
+    const newObject = {};
+    for (const key in object) {
+      if (!values.includes(key)) {
+        newObject[key] = object[key];
+      }
+    }
+    return newObject;
+  }
+  return 'invalid values, clear object require';
 }
 
-//_.keys
+// _.keys
 
-export function keys(object){
-	if (validObject(object)){
-		return Object.keys(object);
-	}
-	else return 'invalid values, clear object require';
+export function keys(object) {
+  if (validObject(object)) {
+    return Object.keys(object);
+  }
+  return 'invalid values, clear object require';
 }
 
-//_.values
+// _.values
 
-export function values(object){
-	if(validObject(object)){
-		return Object.values(object);	
-	}
-	else return 'invalid values, clear object require';
+export function values(object) {
+  if (validObject(object)) {
+    return Object.values(object);
+  }
+  return 'invalid values, clear object require';
 }
 
 // _.get
 
-export function get(object, path, defaultValue){
-	if (validObject(object)){
-		path = (Array.isArray(path))? path : path.split(".");
-		let key = object;
-		key = key[path[0]];
-		if (key&&path.length>1){
-			return get(key, path.slice(1), defaultValue);
-		}	
-			return (key === undefined)? defaultValue : key;		
-	}
-	else return 'invalid values, clear object require';	
+export function get(object, path, defaultValue) {
+  if (validObject(object)) {
+    path = (Array.isArray(path)) ? path : path.split('.');
+    let key = object;
+    key = key[path[0]];
+    if (key && path.length > 1) {
+      return get(key, path.slice(1), defaultValue);
+    }
+    return (key === undefined) ? defaultValue : key;
+  }
+  return 'invalid values, clear object require';
 }
 
-//_.unset
+// _.unset
 
-export function unset(object, path){
-	if (validObject(object)){
-		path = (Array.isArray(path))? path.join(".") : path;
-		let str = "object." + path;
-		return eval("delete " + str);
-	}
-	else return 'invalid values, clear object require';
+export function unset(object, path) {
+  if (validObject(object)) {
+    path = (Array.isArray(path)) ? path.join('.') : path;
+    const str = `object.${path}`;
+    return eval(`delete ${str}`);
+  }
+  return 'invalid values, clear object require';
 }
